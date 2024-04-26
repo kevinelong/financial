@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Calc</title>
+    <script src="./loan.js"></script>
+</head>
+<body>
+    Principal:<input type="number" id="principalAmountElement" value="53000"><br>
+    Rate:<input type="number" id="percentageRateElement" value="7.625"><br>
+    Years:<input type="number" id="numberOfYearsElement" value="15"><br>
+    <button id="calc">Calculate</button>
+    <hr>
+    Monthly Payment: $<input type="number" id="outputElement" readonly>
+</body>
+<script>
+    function doCalc(){
+        debugger
+        const principalAmount = Number(principalAmountElement.value);
+        const percentageRate = Number(percentageRateElement.value) / 100;
+        const numberOfMonths = Number(numberOfYearsElement.value) * 12;
+        const result = getPayment(principalAmount, percentageRate, numberOfMonths);
+        outputElement.value = result.toFixed(2);
+    }
+
+    calc.onclick = doCalc;
+</script>
+</html>
