@@ -12,7 +12,9 @@
     Years:<input type="number" id="numberOfYearsElement" value="15"><br>
     <button id="calc">Calculate</button>
     <hr>
-    Monthly Payment: $<input type="number" id="outputElement" readonly>
+    Monthly Payment: $<input type="number" id="outputElement" readonly><br>
+    Total Paid: $<input type="number" id="totalElement" readonly><br>
+    Interest Paid: $<input type="number" id="interestPaidElement" readonly><br>
 </body>
 <script>
     function doCalc(){
@@ -22,6 +24,12 @@
         const numberOfMonths = Number(numberOfYearsElement.value) * 12;
         const result = getPayment(principalAmount, percentageRate, numberOfMonths);
         outputElement.value = result.toFixed(2);
+
+        const totalPaid = result * numberOfMonths;
+        const interestPaid = totalPaid - principalAmount;
+        
+        totalElement.value = totalPaid.toFixed(2);
+        interestPaidElement.value = interestPaid.toFixed(2);
     }
 
     calc.onclick = doCalc;
